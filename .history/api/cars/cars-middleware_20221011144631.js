@@ -41,7 +41,7 @@ const checkVinNumberValid = (req, res, next) => {
   // DO YOUR MAGIC
   const { vin } = req.body
   const error = { status: 400 }
-  if(vin === 'abc'){
+  if(vin === typeof integer){
     error.message = 'vin abc is invalid'
     next(error)
   }
@@ -54,7 +54,7 @@ const checkVinNumberUnique = async (req, res, next) => {
     const existing = await db('cars').where('vin', req.body.vin).first()
 
     if(existing){
-      next({ status: 400, message:'vin 11111111111111111 already exists'})
+      next({ status: 400, message:'non-unique vin'})
     }else{
       next()
     }

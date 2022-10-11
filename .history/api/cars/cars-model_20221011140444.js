@@ -6,16 +6,15 @@ const getAll = async () => {
   return result
 }
 
-const getById =  (id) => {
+const getById = async (cars_id) => {
   // DO YOUR MAGIC
-   return db('cars').where("id", id).first()
-  
+  const result = await db('cars').where("cars_id", cars_id)
+  return result
 }
 
-const create = (car) => {
+const create = async (car) => {
   // DO YOUR MAGIC
- return db('cars').insert(car).then(([id]) => getById(id))
-  
+  const result = await db('cars').insert(car)
 }
 
 module.exports= {

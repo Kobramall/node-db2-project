@@ -39,13 +39,14 @@ const checkCarPayload = (req, res, next) => {
 
 const checkVinNumberValid = (req, res, next) => {
   // DO YOUR MAGIC
-  const { vin } = req.body
-  const error = { status: 400 }
-  if(vin === 'abc'){
-    error.message = 'vin abc is invalid'
-    next(error)
+  if (vin.validate(req.params.vin)){
+    next()
+  } else{
+    next({ 
+      status: 400, 
+      message: `vin ${req.params.vin} is invalid`,
+    })
   }
-  next()
 }
 
 const checkVinNumberUnique = async (req, res, next) => {

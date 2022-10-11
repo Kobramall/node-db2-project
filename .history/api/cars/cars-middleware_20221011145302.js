@@ -41,7 +41,7 @@ const checkVinNumberValid = (req, res, next) => {
   // DO YOUR MAGIC
   const { vin } = req.body
   const error = { status: 400 }
-  if(vin === 'abc'){
+  if(vin === typeof integer){
     error.message = 'vin abc is invalid'
     next(error)
   }

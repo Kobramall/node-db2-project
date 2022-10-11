@@ -6,7 +6,7 @@ const getAll = async () => {
   return result
 }
 
-const getById =  (id) => {
+const getById =  (cars_id) => {
   // DO YOUR MAGIC
    return db('cars').where("id", id).first()
   
